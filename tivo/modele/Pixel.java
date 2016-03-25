@@ -12,6 +12,12 @@ public class Pixel {
 		this.blue=b;
 	}
 	
+	public Pixel(Pixel pixel) {
+		red = pixel.red;
+		green = pixel.green;
+		blue = pixel.blue;
+	}
+
 	public int getRed(){
 		return red;
 	}

@@ -149,8 +149,16 @@ public class Modele extends Observable{
 		}
 	}
 
+	private Pixel[][] copie(Pixel[][] im){
+		Pixel[][] rep = new Pixel[im.length][im[0].length];
+		for(int i = 0; i < original.length; i++)
+			for(int j = 0; j < original[0].length; j++)
+				rep[i][j] = new Pixel(im[i][j]);
+		return rep;
+	}
+	
 	public void filtreVert() {
-		ppm.setImage(original);
+		ppm.setImage(copie(original));
 		for(int i = 0; i < getHeight(); i++){
 			for(int j = 0; j < getWidth(); j++){
 				getImage()[i][j].setRed(0);
@@ -161,7 +169,7 @@ public class Modele extends Observable{
 	}
 
 	public void filtreRouge() {
-		ppm.setImage(original);
+		ppm.setImage(copie(original));
 		for(int i = 0; i < getHeight(); i++){
 			for(int j = 0; j < getWidth(); j++){
 				getImage()[i][j].setGreen(0);
@@ -172,7 +180,7 @@ public class Modele extends Observable{
 	}
 
 	public void filtreBleu() {
-		ppm.setImage(original);
+		ppm.setImage(copie(original));
 		for(int i = 0; i < getHeight(); i++){
 			for(int j = 0; j < getWidth(); j++){
 				getImage()[i][j].setRed(0);
@@ -183,7 +191,7 @@ public class Modele extends Observable{
 	}
 
 	public void filtreNegatif() {
-		ppm.setImage(original);
+		ppm.setImage(copie(original));
 		for(int i = 0; i < getHeight(); i++){
 			for(int j = 0; j < getWidth(); j++){
 				getImage()[i][j].setRed(255 - getImage()[i][j].getRed());
@@ -195,7 +203,7 @@ public class Modele extends Observable{
 	}
 
 	public void filtreNuanceGris() {
-		ppm.setImage(original);
+		ppm.setImage(copie(original));
 		for(int i = 0; i < getHeight(); i++){
 			for(int j = 0; j < getWidth(); j++){
 				double gris = 0.299 * getImage()[i][j].getRed() + 0.587 * getImage()[i][j].getGreen() + 0.114 * getImage()[i][j].getBlue(); 

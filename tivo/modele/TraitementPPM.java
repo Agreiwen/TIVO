@@ -22,7 +22,11 @@ public class TraitementPPM {
 	
 	public void lireFichier(){
 		image = readppm();
-		model.setOriginal(image);
+		Pixel[][] original = new Pixel[image.length][image[0].length];
+		for(int i = 0; i < original.length; i++)
+			for(int j = 0; j < original[0].length; j++)
+				original[i][j] = new Pixel(image[i][j]);
+		model.setOriginal(original);
 	}
 	
 	public Pixel[][] readppm() {
